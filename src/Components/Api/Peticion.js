@@ -12,7 +12,7 @@ const Api = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: "http://127.0.0.1:8000/getapi1",                
+            url: "tabla2consulta/",                
         }) 
             .then(function (response) {
                 if (response.status === 200){

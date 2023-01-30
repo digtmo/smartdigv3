@@ -11,16 +11,18 @@ import { TablaDashboard } from './TablaDashboard';
 import { GetToken } from '../../../Components/Api/Getoken';
 import { Auth } from '../../Api/Auth';
 import { GetDataUser } from '../../Api/Datausuario';
+import {Tabla2} from '../../Api/Tableui'
 
 
 function Dashboard(props) {
   return (
   <React.Fragment>
     <Container fixed>
+      <br/>
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid xs={12} md={6}>
-        <h1>Excel Avanzado</h1>
+        <h1>Lengua de señas chilena</h1>
         </Grid>
         <Grid xs={12} md={6} textAlign="right" alignSelf="flex-end">
         <Link to="/"> <UndoIcon fontSize="large"/></Link>
@@ -42,6 +44,7 @@ function Dashboard(props) {
       <GetToken/>
       <Auth/>
       <GetDataUser/>
+      <Tabla2/>
     </Container>
   </React.Fragment>
   );

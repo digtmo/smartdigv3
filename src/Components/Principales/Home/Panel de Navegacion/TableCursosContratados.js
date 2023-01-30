@@ -12,9 +12,7 @@ import { Link } from 'react-router-dom';
 
 
 const dataCurso = [
-  {name:"Excel Avanzado",Matriculados:"20",SinIniciar: "10",Completados:"8", Iniciado:"2", Reprobados:"0", Acceso: <Link to="/dashboard"> <LoginIcon/> </Link> },
-  {name:"Diseño UX/UI",Matriculados:"8",SinIniciar: "3", Completados:"3", Iniciado:"2", Reprobados:"0", Acceso: <Link to="/dashboard"> <LoginIcon/> </Link>},
-  {name:"Excel Medio",Matriculados:"14",SinIniciar: "9", Completados:"4", Iniciado:"1",   Reprobados:"0",Acceso:<Link to="/dashboard"> <LoginIcon/> </Link>},
+  {name:"Lengua de señas chilena",Matriculados:"12",SinIniciar: "3",Completados:"9", Iniciado:"2", Reprobados:"0", Acceso: <Link to="/dashboard"> <LoginIcon/> </Link> },
 ]
 
 const totalCursos = dataCurso.length

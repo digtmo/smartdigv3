@@ -44,7 +44,7 @@ function Parametros() {
         <Grid xs={12} md={4} >
           <Item>Inscritos: 
             <br/>
-            {totalInscritos}</Item>
+          12 {/* {totalInscritos} */}</Item>
         </Grid>
         <Grid xs={12} md={4}>
           <Item>Aprobados: 

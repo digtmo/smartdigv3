@@ -1,9 +1,8 @@
-import React, { useMemo} from 'react';
+import React, {useMemo,  useState, useEffect } from 'react';
 import MaterialReactTable from 'material-react-table';
-import { Button, ListItemIcon, } from '@mui/material';
-import { Send, } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 import EmailIcon from '@mui/icons-material/Email';
+import axios from 'axios';
 
 
 
@@ -14,7 +13,7 @@ function enviarCorreo(correo, nombre, curso) {
   // Abre la aplicación de correo electrónico del usuario y crea un nuevo correo con la dirección especificada
   window.open(direccion);
 }
-
+/* 
 const dataApi = [
     {name:"Cristobal Torres",correo:"ctorres@gmail.com",status:"Sin Iniciar", progress:"0", score:"0", datacompleted:"", certificate:<a href="https://avanxa.com/certificates/?d=eyJ2ZXJpZnlfdXVpZCI6ICJmOGQwZGE4M2M3YjE0MTQzODU5MzI2MTUwMzRhZDZmZSIsICJzdGF0dXMiOiAiZG93bmxvYWRhYmxlIiwgIm5hbWUiOiAiRGF2aWQgVG9ycmVzIE1vbGluYSIsICJlbWFpbCI6ICJkYXZpZHRvcnJlc2ltQGdtYWlsLmNvbSIsICJjb3Vyc2VfaWQiOiAiY291cnNlLXYxOlVBdXRvbm9tYStOWUFFK0MxMS0yMDIyIiwgImNyZWF0ZWRfZGF0ZSI6ICIyMDIyLTExLTE4IDE1OjI3OjM5LjAyMzcwMSswMDowMCIsICJncmFkZSI6ICIxLjAifQ=="></a>, EnviarCorreo: <Link  onClick={() => enviarCorreo(dataApi[0].correo,dataApi[0].name,dataApi[0].curso)}> <EmailIcon/> </Link>},
     {name:"David Torres",correo:"dtorres@gmail.com", status:"Sin Iniciar", progress:"0", score:"0", datacompleted:"", certificate: <a href="https://avanxa.com/certificates/?d=eyJ2ZXJpZnlfdXVpZCI6ICJmOGQwZGE4M2M3YjE0MTQzODU5MzI2MTUwMzRhZDZmZSIsICJzdGF0dXMiOiAiZG93bmxvYWRhYmxlIiwgIm5hbWUiOiAiRGF2aWQgVG9ycmVzIE1vbGluYSIsICJlbWFpbCI6ICJkYXZpZHRvcnJlc2ltQGdtYWlsLmNvbSIsICJjb3Vyc2VfaWQiOiAiY291cnNlLXYxOlVBdXRvbm9tYStOWUFFK0MxMS0yMDIyIiwgImNyZWF0ZWRfZGF0ZSI6ICIyMDIyLTExLTE4IDE1OjI3OjM5LjAyMzcwMSswMDowMCIsICJncmFkZSI6ICIxLjAifQ=="></a>, EnviarCorreo: <Link  onClick={() => enviarCorreo(dataApi[1].correo,dataApi[1].name,dataApi[1].curso)}> <EmailIcon/> </Link>},
@@ -36,15 +35,33 @@ const dataApi = [
     {name:"Gino Bujes",correo:"gbujes@gmail.com",status:"Sin Iniciar", progress:"0", score:"0", datacompleted:"", certificate:"", EnviarCorreo: <Link  onClick={() => enviarCorreo(dataApi[17].correo,dataApi[17].name,dataApi[17].curso)}> <EmailIcon/> </Link>},
     {name:"Felipe Oneto",correo:"foneto@gmail.com",status:"Sin Iniciar", progress:"0", score:"0", datacompleted:"", certificate:"", EnviarCorreo: <Link  onClick={() => enviarCorreo(dataApi[18].correo,dataApi[18].name,dataApi[18].curso)}> <EmailIcon/> </Link>},
     {name:"Gino Bujes",correo:"gbujes@gmail.com",status:"Sin Iniciar", progress:"0", score:"0", datacompleted:"", certificate:"", EnviarCorreo: <Link  onClick={() => enviarCorreo(dataApi[19].correo,dataApi[19].name,dataApi[19].curso)}> <EmailIcon/> </Link>},
-  ]
+  ] */
 
 
 const TablaDashboard = () => {
+  const [dataApi, setDataApi] = useState("");
+  useEffect(() => {
+      axios({
+          method: 'get',
+          url: "tabla4consulta/",                
+      }) 
+          .then(function (response) {
+              if (response.status === 200){
+                  setDataApi(response.data)
+                  console.log(response)
+              }})
+          .catch(function(error){
+              console.log("Error de Petición", error)
+          }) 
+  },[])
+
+  
+  
     //should be memoized or stable
     const columns = useMemo(
       () => [
         {
-          accessorKey: 'name', //access nested data with dot notation
+          accessorKey: 'nombre', //access nested data with dot notation
           header: 'Nombre',
         },
         /*{
@@ -52,19 +69,19 @@ const TablaDashboard = () => {
         header: 'Correo',
         },*/
         {
-            accessorKey: 'status',
+            accessorKey: 'passed',
             header: 'Estado',
         },
         {
-          accessorKey: 'progress',
+          accessorKey: 'progresocurso',
           header: 'Progreso',
         },
         {
-            accessorKey: 'score',
+            accessorKey: 'notacurso',
             header: 'Puntaje',
           },
         {
-          accessorKey: 'certificate',
+          accessorKey: 'download_url',
           header: 'Certificado',
         },
         {

@@ -34,8 +34,8 @@ function Home () {
             <br/>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={1}>
-                <Grid xs={12} display="flex" justifyContent="center"  alignItems="center">
-                  <img src={Banner} width="90%"></img>
+                <Grid xs={12}>
+                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} href="mailto:admision@avanxa.com"> <img src={Banner} width="90%"></img></a>
                 </Grid>
               </Grid>
             </Box>
