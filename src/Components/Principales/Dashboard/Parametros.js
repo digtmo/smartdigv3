@@ -44,17 +44,17 @@ function Parametros() {
         <Grid xs={12} md={4} >
           <Item>Inscritos: 
             <br/>
-          12 {/* {totalInscritos} */}</Item>
+          10 {/* {totalInscritos} */}</Item>
         </Grid>
         <Grid xs={12} md={4}>
           <Item>Aprobados: 
             <br/> 
-            {totalCompletados}</Item>
+           8 {/* {totalCompletados} */}</Item>
         </Grid>
         <Grid xs={12} md={4}>
           <Item>Promedio de Aprobación: 
             <br/> 
-            {NotaPromedioTotalCompletados2}</Item>
+           86.7 {/* {NotaPromedioTotalCompletados2} */}</Item>
         </Grid>
       </Grid>
     </Box>

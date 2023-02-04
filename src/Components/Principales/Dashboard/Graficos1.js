@@ -10,7 +10,7 @@ class GraficoPorcentajeCompletado extends React.Component {
 
       this.state = {
       
-        series: [totalCompletadosPorcentaje],
+        series: [80/* totalCompletadosPorcentaje */],
         options: {
             chart: {
                 height: 280,
@@ -84,7 +84,7 @@ class GraficoPorcentajeCompletado extends React.Component {
 
       this.state = {
       
-        series: [totalProgresoPorcentaje],
+        series: [10/* totalProgresoPorcentaje */],
         options: {
             chart: {
                 height: 280,
@@ -159,7 +159,7 @@ class GraficoPorcentajeCompletado extends React.Component {
       
       this.state = {
       
-        series: [totalSininiciarPorcentaje],
+        series: [10/* totalSininiciarPorcentaje */],
         options: {
             chart: {
                 height: 280,

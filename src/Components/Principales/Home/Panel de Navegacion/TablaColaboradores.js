@@ -3,6 +3,8 @@ import MaterialReactTable from 'material-react-table';
 import axios from 'axios';
 
 
+
+
 const TablaColaboradores = () => {
   const [dataApi, setDataApi] = useState("");
   useEffect(() => {
@@ -19,6 +21,9 @@ const TablaColaboradores = () => {
               console.log("Error de Petición", error)
           }) 
   },[])
+
+
+
   //should be memoized or stable
   const columns = useMemo(
     () => [
@@ -27,7 +32,7 @@ const TablaColaboradores = () => {
         header: 'Nombre',
       },
       {
-        accessorKey: 'notacurso',
+        accessorKey: 'progresocurso',
         header: 'Progreso',
       },
       /* {
@@ -39,7 +44,7 @@ const TablaColaboradores = () => {
         header: 'Correo',
       },
       {
-        accessorKey: 'sku',
+        accessorKey: 'nombrecurso',
         header: 'Curso',
       },
       {

@@ -7,7 +7,6 @@ import { PanelDeNavegacion } from './Panel de Navegacion/PanelNavegacion';
 import LogoAvanxa from  '../../../Imagenes/logoavanxa.png'
 import { Modal } from './FormularioContacto';
 import { Api } from '../../Api/Peticion';
-import Banner from '../../../Imagenes/Banner.png'
 
 function Home () {
     return (
@@ -30,17 +29,13 @@ function Home () {
              </Box>
            ))}
             <br/>
-            <PanelDeNavegacion/>
+            
+            <PanelDeNavegacion/>          
             <br/>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={1}>
-                <Grid xs={12}>
-                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} href="mailto:admision@avanxa.com"> <img src={Banner} width="90%"></img></a>
-                </Grid>
-              </Grid>
-            </Box>
-            <br/>
-            <Modal/>
+            
+            <Grid xs={12} md={3} display="flex" justifyContent="center"  alignItems="center"  >
+            <Modal />
+            </Grid>
             <Api/>
         </Container>
     )

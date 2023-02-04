@@ -69,7 +69,7 @@ const TablaDashboard = () => {
         header: 'Correo',
         },*/
         {
-            accessorKey: 'passed',
+            accessorKey: 'estadoparcial',
             header: 'Estado',
         },
         {

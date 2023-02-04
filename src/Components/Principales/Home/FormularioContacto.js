@@ -95,10 +95,10 @@ function Modal() {
           <Typography gutterBottom>
            En este formulario podrás contactar al responsable encargado del Área de Soporte o Finanzas, para resolver cualquier duda o problema.
           </Typography>
-
+          <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Item> <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <Grid item xs={12} display="flex" justifyContent="center" alignItems="center">
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="demo-select-small">Área</InputLabel>
             <Select
                 labelId="demo-select-small"
@@ -114,14 +114,17 @@ function Modal() {
             </Select>
             </FormControl>
             <br/>
-            <TextField
+          </Grid>
+          <Grid item xs={12} display="flex" justifyContent="center" alignItems="center">
+          <TextField
           id="outlined-textarea"
-          label="Multiline Placeholder"
+          label="Escribe tu mensaje acá"
           placeholder="Placeholder"
           multiline
-        /></Item>
+        />
           </Grid>
         </Grid>
+        </Box>
          
 
         </DialogContent>

@@ -7,6 +7,9 @@ import PropTypes from 'prop-types';
 import { CursosContratados } from './CursosContratados';
 import { TablaFinanzas } from './Finanzas';
 import { TablaColaboradores } from './TablaColaboradores';
+import Fade from '@mui/material/Fade';
+import CircularProgress from '@mui/material/CircularProgress';
+import Grid from '@mui/system/Unstable_Grid';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,7 +47,36 @@ function TabPanel(props) {
   
   function PanelDeNavegacion() {
     const [value, setValue] = React.useState(0);
+    const [loading, setLoading] = React.useState(false);
+  const [query, setQuery] = React.useState('idle');
+  const timerRef = React.useRef();
+
+  React.useEffect(
+    () => () => {
+      clearTimeout(timerRef.current);
+      handleClickQuery()
+    },
+    [1],
+  );
+
+  const handleClickLoading = () => {
+    setLoading((prevLoading) => !prevLoading);
+  };
+    const handleClickQuery = () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
   
+      if (query !== 'idle') {
+        setQuery('idle');
+        return;
+      }
+  
+      setQuery('progress');
+      timerRef.current = window.setTimeout(() => {
+        setQuery('success');
+      }, 2000);
+    };
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -53,7 +85,7 @@ function TabPanel(props) {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-            <Tab label="Cursos Contradados" {...a11yProps(0)} />
+            <Tab label="Cursos Contradados" {...a11yProps(0) } />
             <Tab label="Colaboradores" {...a11yProps(0)} />
             <Tab label="Finanzas" {...a11yProps(0)} />
           </Tabs>
@@ -62,7 +94,22 @@ function TabPanel(props) {
        <CursosContratados/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <TablaColaboradores/>
+        {query === 'success' ? (
+             <TablaColaboradores/>
+        ) : (
+          <Fade
+            in={query === 'progress'}
+            style={{
+              transitionDelay: query === 'progress' ? '800ms' : '100ms',
+            }}
+            unmountOnExit
+          >
+            <Grid display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+            </Grid>
+          </Fade>
+        )}
+
         </TabPanel>
         <TabPanel value={value} index={2}>
          <TablaFinanzas/>

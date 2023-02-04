@@ -12,13 +12,15 @@ import { Link } from 'react-router-dom';
 
 
 const dataCurso = [
-  {name:"Lengua de señas chilena",Matriculados:"12",SinIniciar: "3",Completados:"9", Iniciado:"2", Reprobados:"0", Acceso: <Link to="/dashboard"> <LoginIcon/> </Link> },
+  {name:"Lengua de señas chilena",Matriculados:"10",SinIniciar: "3",Completados:"8", Iniciado:"2", Reprobados:"0", Acceso: <Link to="/dashboard"> <LoginIcon/> </Link> },
 ]
 
 const totalCursos = dataCurso.length
 const totalMatriculados = (dataCurso.reduce((sum, item) => sum + parseInt(item.Matriculados) , 0) ) // Suma de los Matriculados
 const totalCompletado = (dataCurso.reduce((sum, item) => sum + parseInt(item.Completados) , 0) )// Suma de los Completados
-const porcentajeCompletados = ((totalCompletado * 100)/totalMatriculados).toFixed(1) // porcentaje de los alumnos con curso completado
+const porcentajeCompletados2 = ((totalCompletado * 100)/totalMatriculados).toFixed(1) // porcentaje de los alumnos con curso completado
+const porcentajeCompletados = 80
+
 
 function TablaCursosContratados() {
   return (
