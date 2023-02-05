@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Box from '@mui/system/Box';
 import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import { totalCompletados, totalInscritos, diasRestantes, NotaPromedioTotalCompletados2} from '../../Api/Tableui';
-import {infoCursoImportant} from '../../Api/DataCurso'
+import {diasRestantes} from '../../Api/Tableui';
+import { DataContext } from '../../../Context/DataContext';
+import {  GraficoPorcentajeCompletado, GraficoPorcentajeSinIniciar,GraficoPorcentajeIniciado,GraficoPorcentajeIniciado2 } from './Graficos1';
+
 
 const Item = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -15,6 +17,7 @@ const Item = styled('div')(({ theme }) => ({
   borderRadius: '4px',
   textAlign: 'center',
 }));
+
 
 function FechaInicioRestante() {
   return (
@@ -38,23 +41,26 @@ function FechaInicioRestante() {
 }
 
 function Parametros() {
+  const {CantidadAprobados} = useContext(DataContext)  
+  const {CantidadInscritos} = useContext(DataContext)  
+  const {PromedioAprobado} = useContext(DataContext)  
   return (
     <Box sx={{ flexGrow: 1 }}> 
       <Grid  container spacing={2} >
         <Grid xs={12} md={4} >
           <Item>Inscritos: 
             <br/>
-          10 {/* {totalInscritos} */}</Item>
+           {CantidadInscritos}</Item>
         </Grid>
         <Grid xs={12} md={4}>
           <Item>Aprobados: 
             <br/> 
-           8 {/* {totalCompletados} */}</Item>
+            {CantidadAprobados}</Item>
         </Grid>
         <Grid xs={12} md={4}>
           <Item>Promedio de Aprobación: 
             <br/> 
-           86.7 {/* {NotaPromedioTotalCompletados2} */}</Item>
+           {PromedioAprobado}</Item>
         </Grid>
       </Grid>
     </Box>
@@ -62,18 +68,18 @@ function Parametros() {
 }
 
 
-function GraficosRadial({GraficoPorcentajeCompletado, GraficoPorcentajeIniciado, GraficoPorcentajeSinIniciar}) {
+function GraficosRadial() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid xs={6} md={4} display="flex" justifyContent="center" alignItems="center">
-        <GraficoPorcentajeSinIniciar/>     
+        <GraficoPorcentajeSinIniciar/> 
         </Grid>
         <Grid xs={6} md={4} display="flex" justifyContent="center" alignItems="center">
-        <GraficoPorcentajeIniciado/>
+         <GraficoPorcentajeIniciado/>
         </Grid>
         <Grid xs={12} md={4} display="flex" justifyContent="center" alignItems="center">
-        <GraficoPorcentajeCompletado/>
+        <GraficoPorcentajeCompletado />
         </Grid>
       </Grid>
     </Box>
@@ -81,23 +87,6 @@ function GraficosRadial({GraficoPorcentajeCompletado, GraficoPorcentajeIniciado,
 }
 
 
-
   
-function FullWidthGrid4({ChartAlumnos}) {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid xs={6} md={6}>
-        <ChartAlumnos/>
-        </Grid>
-      </Grid>
-    </Box>
-  );
-}
-
-  
-
-
-
-export {GraficosRadial,Parametros, FechaInicioRestante,FullWidthGrid4};
+export {GraficosRadial,Parametros, FechaInicioRestante};
 

@@ -407,7 +407,4 @@ const infoEstudiantesCurso = {
     ]
 }
 
-const infoImportantEstudiantesCurso = infoEstudiantesCurso.results
-console.log(infoImportantEstudiantesCurso)
 
-export {infoImportantEstudiantesCurso}

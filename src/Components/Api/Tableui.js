@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import {infoImportantEstudiantesCurso} from './EstudiantesCurso'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -33,10 +32,6 @@ const Tabla2 = () => {
           }) 
   },[])
 }
-
-
-console.log("data 4",data4.length)
-
 
 
 
@@ -173,7 +168,7 @@ function Row(props) {
 }
 
 
-const Usernames = infoImportantEstudiantesCurso.map(data => data.username)
+
 
 
 export {CollapsibleTable, Tabla2, totalInscritos, totalCompletados, totalProgreso, totalAbandonado, totalCompletadosPorcentaje, totalProgresoPorcentaje,totalSininiciarPorcentaje, totalAbandonadoPorcentaje, fechaFinalización, diasRestantes, notaPromedio, NotaPromedioTotalCompletados2};

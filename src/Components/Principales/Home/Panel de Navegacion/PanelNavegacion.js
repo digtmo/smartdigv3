@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import { CursosContratados } from './CursosContratados';
 import { TablaFinanzas } from './Finanzas';
 import { TablaColaboradores } from './TablaColaboradores';
-import Fade from '@mui/material/Fade';
 import CircularProgress from '@mui/material/CircularProgress';
-import Grid from '@mui/system/Unstable_Grid';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -47,36 +45,8 @@ function TabPanel(props) {
   
   function PanelDeNavegacion() {
     const [value, setValue] = React.useState(0);
-    const [loading, setLoading] = React.useState(false);
-  const [query, setQuery] = React.useState('idle');
-  const timerRef = React.useRef();
+    const [isLoading, setLoading]= React.useState(true)
 
-  React.useEffect(
-    () => () => {
-      clearTimeout(timerRef.current);
-      handleClickQuery()
-    },
-    [1],
-  );
-
-  const handleClickLoading = () => {
-    setLoading((prevLoading) => !prevLoading);
-  };
-    const handleClickQuery = () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-  
-      if (query !== 'idle') {
-        setQuery('idle');
-        return;
-      }
-  
-      setQuery('progress');
-      timerRef.current = window.setTimeout(() => {
-        setQuery('success');
-      }, 2000);
-    };
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -91,25 +61,15 @@ function TabPanel(props) {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
+        {isLoading && (
+        <Box sx={{ display: 'flex',justifyContent:"center"  ,alignItems:"center" }}>
+          <CircularProgress />
+        </Box>
+      )}
        <CursosContratados/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-        {query === 'success' ? (
-             <TablaColaboradores/>
-        ) : (
-          <Fade
-            in={query === 'progress'}
-            style={{
-              transitionDelay: query === 'progress' ? '800ms' : '100ms',
-            }}
-            unmountOnExit
-          >
-            <Grid display="flex" justifyContent="center" alignItems="center">
-            <CircularProgress />
-            </Grid>
-          </Fade>
-        )}
-
+        <TablaColaboradores onLoad={() => setLoading(false)} />
         </TabPanel>
         <TabPanel value={value} index={2}>
          <TablaFinanzas/>

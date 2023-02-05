@@ -3,7 +3,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Grid from '@mui/system/Unstable_Grid';
 import Box from '@mui/system/Box';
 import { Container } from '@mui/system';
-import { totalCursos, totalMatriculados, porcentajeCompletados, TablaCursosContratados } from './TableCursosContratados';
+import { totalCursos,TablaCursosContratados } from './TableCursosContratados';
 import axios from 'axios';
 import React, {useState, useEffect } from 'react';
 import Banner from '../../../../Imagenes/Banner.png'
@@ -11,26 +11,30 @@ import Banner from '../../../../Imagenes/Banner.png'
 
 function CursosContratados () {
      const [dataApi, setDataApi] = useState("");
+     const [Aprobados, setAprobados] = useState("");
   useEffect(() => {
       axios({
           method: 'get',
-          url: "tabla2consulta/",                
+          url: "tabla4consulta/",                
       }) 
           .then(function (response) {
               if (response.status === 200){
                   setDataApi(response.data)
-                  console.log(response)
+                  const info = response.data;
+                  const filterApi = info.filter(data => data.notacurso >= 60);
+                  console.log(filterApi)
+                  setAprobados(filterApi)
               }})
           .catch(function(error){
               console.log("Error de Petición", error)
           }) 
   },[])
 
-/* const aprobados = dataApi.filter( data => data.progresocurso > 60)
-const cAprobados = aprobados.length
-const Cantidad = dataApi.length
-const CAprobaodosPorcentaje =  (cAprobados*100)/Cantidad
-console.log(CAprobaodosPorcentaje) */
+
+const FiltroAprobados = Aprobados
+const CantidadAprobados = FiltroAprobados.length
+const Inscritos = dataApi.length
+const PorcentajeAprobados =  (CantidadAprobados*100)/Inscritos
 
     return (
         <Container fixed>
@@ -46,13 +50,13 @@ console.log(CAprobaodosPorcentaje) */
                     <Grid xs={12} md={4}>
                         <Alert severity="info">
                         <AlertTitle>Inscritos:</AlertTitle>
-                            {dataApi.length} Colaboradores Inscritos 
+                            {Inscritos} Colaboradores Inscritos 
                         </Alert>
                     </Grid>
                     <Grid xs={12} md={4}>
                         <Alert severity="success">
                         <AlertTitle>Aprobados:</AlertTitle>
-                            {porcentajeCompletados}% del total de los Cursos Aprobados
+                            {PorcentajeAprobados}% del total de los Cursos Aprobados
                         </Alert>
                     </Grid>
                 </Grid>

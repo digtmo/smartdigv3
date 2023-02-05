@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import { GraficoPorcentajeCompletado,GraficoPorcentajeSinIniciar,GraficoPorcentajeIniciado, ChartAlumnos} from './Graficos1';
+import React from 'react';
 import {GraficosRadial,Parametros, FechaInicioRestante, FullWidthGrid4} from './Parametros'
 import { Container } from '@mui/system';
 import { Link } from 'react-router-dom';
@@ -8,10 +7,6 @@ import Box from '@mui/system/Box';
 import Grid from '@mui/system/Unstable_Grid';
 import { DefinicionEstados } from './Definiciones';
 import { TablaDashboard } from './TablaDashboard';
-import { GetToken } from '../../../Components/Api/Getoken';
-import { Auth } from '../../Api/Auth';
-import { GetDataUser } from '../../Api/Datausuario';
-import {Tabla2} from '../../Api/Tableui'
 
 
 function Dashboard(props) {
@@ -32,19 +27,10 @@ function Dashboard(props) {
     </Box>
        <FechaInicioRestante/>
       <Parametros/>
-      <GraficosRadial
-      GraficoPorcentajeCompletado={GraficoPorcentajeCompletado}
-      GraficoPorcentajeIniciado={GraficoPorcentajeIniciado}
-      GraficoPorcentajeSinIniciar={GraficoPorcentajeSinIniciar}/>
+      <GraficosRadial/>
       <DefinicionEstados/> 
       <br/>
-  {/*     <CollapsibleTable/>  */} 
       <TablaDashboard/>
-      <FullWidthGrid4 ChartAlumnos={ChartAlumnos}/> 
-      <GetToken/>
-      <Auth/>
-      <GetDataUser/>
-      <Tabla2/>
     </Container>
   </React.Fragment>
   );

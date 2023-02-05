@@ -1,18 +1,12 @@
 import axios from "axios"
 import { useEffect,useState } from "react"
-/* 
-const endpoint = "/api/discussion/v1/threads/"
-const curso = "course-v1:AIEP+GPTI+C9GPTI"
-const raiz = "https://elearning.avanxa.com"
 
- */
-
-const Api = () => {
+const ApiDashboard = () => {
     const [dataApi, setDataApi] = useState("");
     useEffect(() => {
         axios({
             method: 'get',
-            url: "tabla2consulta/",                
+            url: "tabla4consulta/",                
         }) 
             .then(function (response) {
                 if (response.status === 200){
@@ -24,8 +18,7 @@ const Api = () => {
             }) 
     },[])
 
-console.log(dataApi)
 }
 
 
-export {Api};
+export {ApiDashboard};
