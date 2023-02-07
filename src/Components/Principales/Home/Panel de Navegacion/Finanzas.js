@@ -27,7 +27,7 @@ function TablaFinanzas() {
             <TableCell align="center">Fecha de Compra</TableCell>
             <TableCell align="center">Fecha de Vencimiento </TableCell>
             <TableCell align="center">Rut Empresa </TableCell>
-            <TableCell align="center">Cantidad</TableCell>
+            <TableCell align="center">Inscritos</TableCell>
             <TableCell align="center">Monto</TableCell>
             <TableCell align="center">Estado de pago</TableCell>
           </TableRow>

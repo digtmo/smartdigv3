@@ -6,7 +6,6 @@ import { Container } from '@mui/system';
 import { totalCursos,TablaCursosContratados } from './TableCursosContratados';
 import axios from 'axios';
 import React, {useState, useEffect } from 'react';
-import Banner from '../../../../Imagenes/Banner.png'
 
 
 function CursosContratados () {
@@ -69,16 +68,7 @@ const PorcentajeAprobados =  (CantidadAprobados*100)/Inscritos
                     </Grid>
                 </Grid>
             </Box>
-            <br/>
-            <br/>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={1}>
-                <Grid xs={12}>
-                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} href="mailto:admision@avanxa.com"> <img src={Banner} width="100%"></img></a>
-                </Grid>
-              </Grid>
-            </Box>
-            <br/>
+             
         </Container>
          
     )

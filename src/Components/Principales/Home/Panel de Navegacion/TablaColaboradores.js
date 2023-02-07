@@ -3,8 +3,6 @@ import MaterialReactTable from 'material-react-table';
 import axios from 'axios';
 
 
-
-
 const TablaColaboradores = () => {
   const [dataApi, setDataApi] = useState("");
   useEffect(() => {

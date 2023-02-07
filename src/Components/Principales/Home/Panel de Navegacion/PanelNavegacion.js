@@ -63,7 +63,7 @@ function TabPanel(props) {
         <TabPanel value={value} index={0}>
         {isLoading && (
         <Box sx={{ display: 'flex',justifyContent:"center"  ,alignItems:"center" }}>
-          <CircularProgress />
+          {/* <CircularProgress /> */}
         </Box>
       )}
        <CursosContratados/>

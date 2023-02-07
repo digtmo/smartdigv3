@@ -17,8 +17,6 @@ const dataCurso = [
 
 const totalCursos = dataCurso.length
 const totalMatriculados = (dataCurso.reduce((sum, item) => sum + parseInt(item.Matriculados) , 0) ) // Suma de los Matriculados
-const totalCompletado = (dataCurso.reduce((sum, item) => sum + parseInt(item.Completados) , 0) )// Suma de los Completados
-const porcentajeCompletados2 = ((totalCompletado * 100)/totalMatriculados).toFixed(1) // porcentaje de los alumnos con curso completado
 const porcentajeCompletados = 80
 
 

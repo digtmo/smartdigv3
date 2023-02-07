@@ -1,93 +1,120 @@
 import * as React from 'react';
-import { CssVarsProvider } from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
-import Typography from '@mui/joy/Typography';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Input from '@mui/joy/Input';
-import Button from '@mui/joy/Button';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function ModeToggle() {
-  const [mounted, setMounted] = React.useState(false);
 
-  // necessary for server-side rendering
-  // because mode is undefined on the server
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) {
-    return null;
-  }
+const theme = createTheme();
 
-/*   return (
-    <Button
-      variant="outlined"
-      onClick={() => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {mode === 'light' ? 'Turn dark' : 'Turn light'}
-    </Button>
-  ); */
-}
+function Login() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    }); 
+  };
 
- function Login() {
+  
+  /*   axios
+      .post("http://localhost:8080/api/1/users/signup/", {
+        email: valores.correo,
+        password: valores.password,
+      })
+      .then(function (response) {
+        if (response.data.success === true) {
+          console.log("ok",response.data)
+          cambiarFormularioEnviado(true);
+          setTimeout(() => cambiarFormularioEnviado(false), 2000); 
+          resetForm();
+          setTimeout(() => navigate("/", { replace: true }) , 2000)
+        }
+      })
+      .catch(function (error) {
+        alert(error.response.data.message);
+        console.log(error)
+      });
+    console.log("Valores onSubmit",valores); */
+  
 
   return (
-    <CssVarsProvider>
-      <main>
-        <ModeToggle />
-        <Sheet
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
           sx={{
-            width: 300,
-            mx: 'auto', // margin left & right
-            my: 4, // margin top & botom
-            py: 3, // padding top & bottom
-            px: 2, // padding left & right
+            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            gap: 2,
-            borderRadius: 'sm',
-            boxShadow: 'md',
+            alignItems: 'center',
           }}
-          variant="outlined"
         >
-          <div>
-            <Typography level="h4" component="h1">
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography level="h2" component="h1">
               <b>Bienvenido!</b>
             </Typography>
             <Typography level="body2">Inicia Sesión para continuar.</Typography>
-          </div>
-          <FormControl>
-            <FormLabel>Email</FormLabel>
-            <Input
-              // html input attribute
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Correo electronico"
               name="email"
-              type="email"
-              placeholder="admin@email.com"
+              autoComplete="email"
+              autoFocus
             />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Contraseña</FormLabel>
-            <Input
-              // html input attribute
+            <TextField
+              margin="normal"
+              required
+              fullWidth
               name="password"
+              label="Contraseña"
               type="password"
-              placeholder="Contraseña"
+              id="password"
+              autoComplete="current-password"
             />
-          </FormControl>
-
-          <Button  sx={{ mt: 1 /* margin top */ }}>Iniciar Sesión</Button>
-          {/* <Typography
-            endDecorator={<Link href="/sign-up">Sign up</Link>}
-            fontSize="sm"
-            sx={{ alignSelf: 'center' }}
-          >
-            Don&apos;t have an account?
-          </Typography> */}
-        </Sheet>
-      </main>
-    </CssVarsProvider>
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Recordarme"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Iniciar Sesión
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">               
+                </Link>
+              </Grid>
+              <Grid item>
+               {/*  <Link href="recuperarcontraseña" variant="body2">
+                   Olvidaste tu contraseña?
+                </Link> */}
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
 
