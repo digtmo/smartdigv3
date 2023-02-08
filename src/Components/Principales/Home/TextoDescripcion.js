@@ -24,7 +24,7 @@ function DividerText() {
   return (
     <Root>
        <Container fixed>
-        <h5>Acceso a estadísticas actualizadas sobre el rendimiento de sus colaboradores en los cursos contratados, porcentaje de aprobación, notas, progreso y certificados. Toda la información en un lugar."</h5>  
+        <h5>El dashboard de la inmobiliaria ofrece una visión global y detallada de las estadísticas de los inmuebles, finanzas y documentos. Permite ver información importante y gestionar documentos en un solo lugar. Mejora la gestión de la inmobiliaria de manera eficiente.</h5>  
         <Divider></Divider>
        </Container>
 

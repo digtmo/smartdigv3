@@ -55,8 +55,8 @@ function TabPanel(props) {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-            <Tab label="Cursos Contradados" {...a11yProps(0) } />
-            <Tab label="Colaboradores" {...a11yProps(0)} />
+            <Tab label="Arrendadas" {...a11yProps(0) } />
+            <Tab label="Por arrendar" {...a11yProps(0)} />
             <Tab label="Finanzas" {...a11yProps(0)} />
           </Tabs>
         </Box>

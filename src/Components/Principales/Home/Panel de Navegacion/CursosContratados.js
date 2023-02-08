@@ -41,21 +41,21 @@ const PorcentajeAprobados =  (CantidadAprobados*100)/Inscritos
                 <Grid container spacing={1}>
                     <Grid xs={12} md={4}>
                         <Alert severity="info">
-                        <AlertTitle>Cursos:</AlertTitle>
-                            {totalCursos} Cursos Contrados  
+                        <AlertTitle>Arrendadas:</AlertTitle>
+                            {totalCursos} Inmuebles Arrendado
                             
                         </Alert>
                     </Grid>
                     <Grid xs={12} md={4}>
                         <Alert severity="info">
-                        <AlertTitle>Inscritos:</AlertTitle>
-                            {Inscritos} Colaboradores Inscritos 
+                        <AlertTitle>Sin Arrendar:</AlertTitle>
+                            {Inscritos} Por arrendar
                         </Alert>
                     </Grid>
                     <Grid xs={12} md={4}>
                         <Alert severity="success">
-                        <AlertTitle>Aprobados:</AlertTitle>
-                            {PorcentajeAprobados}% del total de los Cursos Aprobados
+                        <AlertTitle>En Proceso:</AlertTitle>
+                            {PorcentajeAprobados} En Proceso
                         </Alert>
                     </Grid>
                 </Grid>

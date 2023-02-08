@@ -1,7 +1,7 @@
 const cliente = [
     {
-      Empresa: 'Banco de Chile',
-      Encargado: 'Juan Pérez',
+      Empresa: 'Inmobiliara Kpue',
+      Encargado: 'David Torres',
       Img:'https://portales.bancochile.cl/uploads/000/007/580/742d1688-95f6-44bf-aa2f-f947d4657db5/original/Mi_Banco_BCH.svg',
       cursos: [{
         Name: 'Curso: Instalador eléctrico autorizado clase D',

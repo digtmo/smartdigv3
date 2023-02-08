@@ -6,17 +6,28 @@ import {cliente} from '../../Api/Empresa';
 import { PanelDeNavegacion } from './Panel de Navegacion/PanelNavegacion';
 import LogoAvanxa from  '../../../Imagenes/logoavanxa.png'
 import { Modal } from './FormularioContacto';
-import Banner from '../../../Imagenes/Banner.png'
+import Banner from '../../../Imagenes/digtmov2.png'
 import { DividerText } from './TextoDescripcion';
+import Logo from '../../../Imagenes/Logoletrablanca.png'
+import { createGlobalStyle } from 'styled-components';
+
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color:white;
+  }
+`;
+
 
 function Home () {
     return (
-        <Container fixed>
+        <Container  fixed>
            {cliente.map((item) => (
                <Box sx={{ flexGrow: 1 }}>
+                <br/>
                <Grid container spacing={1}>
                  <Grid xs={12} md={3} display="flex" justifyContent="center" alignItems="center">
-                 <img alt="decorative" style={{paddingTop:25}} align="left" width="90px" src={item.Img} ></img>
+                 <img alt="decorative" style={{paddingTop:25}} align="left" width="120px" src={Logo} ></img>
                  </Grid>
                  <Grid xs={12} md={6} display="flex" justifyContent="center" alignItems="center">
                  <h1 align="center">Bienvenido/a {item.Encargado}
@@ -30,6 +41,7 @@ function Home () {
              </Box>
            ))}
             <br/>
+            <GlobalStyle/>
             <DividerText/>
             <br/>
             <PanelDeNavegacion/>          
@@ -37,7 +49,7 @@ function Home () {
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={1}>
                 <Grid xs={12}>
-                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} href="mailto:admision@avanxa.com"> <img alt="decorative" src={Banner} width="95%"></img></a>
+                <a style={{ display: "flex", justifyContent: "center", alignItems: "center" }} href="mailto:admision@avanxa.com"> <img alt="decorative" src={Banner} width="92%"></img></a>
                 </Grid>
               </Grid>
             </Box>
